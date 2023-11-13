@@ -7,7 +7,7 @@ build/
 
 
 ### property files ###
-application.yml
+application-local.yml
 
 ### STS ###
 .apt_generated
