@@ -10,14 +10,11 @@ import com.sbl.fetchstudy.repository.O_MTO_TW_WFE_Repository;
 import com.sbl.fetchstudy.repository.O_MTO_TW_WFL_Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
@@ -84,11 +81,11 @@ public class FetchTypeTest {
         dependentFetchEagerRepository.saveAll(dependentList);
 
         List<O_MTO_TW_WFE> ownerList = new ArrayList<>();
-        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayFetchEager());
-        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayFetchEager());
-        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayFetchEager());
-        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayFetchEager());
-        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayFetchEager());
+        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayWithFetchEager());
+        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayWithFetchEager());
+        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayWithFetchEager());
+        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayWithFetchEager());
+        ownerList.add(MyEntityFactory.createOwnerMTOTwoWayWithFetchEager());
 
         // 외래 키 설정
         ownerList.get(0).setDependent(dependentList.get(0));
