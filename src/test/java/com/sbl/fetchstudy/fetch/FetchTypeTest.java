@@ -42,7 +42,7 @@ public class FetchTypeTest {
     @DisplayName("Owner 가 Dependent를 Eager 조회")
     void findByOwnerTest() {
         saveDatas();
-        clearPersistence();
+        clearSession();
         O_MTO_TW_WFE owner = ownerWithFetchEagerRepository.findById(1L).orElseThrow(NullPointerException::new);
         System.out.println("owner.getName() = " + owner.getName());
         System.out.println("food.getUser().getName() = " + owner.getDependent().getName());
@@ -52,7 +52,7 @@ public class FetchTypeTest {
     @DisplayName("Dependent 가 Owner를 Eager 조회")
     void findByDependentEagerTest(){
         saveDatas();
-        clearPersistence();
+        clearSession();
         D_MTO_TW_FE dependent = dependentFetchEagerRepository.findById(1L).orElseThrow(NullPointerException::new);
         System.out.println("dependent.getName() = " + dependent.getName());
 
@@ -65,7 +65,7 @@ public class FetchTypeTest {
     @DisplayName("dependent 가 Owner를 Lazy 조회1")
     void findByDependentLazyTest(){
         saveDatas();
-        clearPersistence();
+        clearSession();
         D_MTO_TW_FL dependent = dependentFetchLazyRepository.findById(1L).orElseThrow(NullPointerException::new);
         System.out.println("dependent.getName() = " + dependent.getName());
         dependent.getOwnerList().forEach((owner) ->
@@ -98,7 +98,7 @@ public class FetchTypeTest {
     }
 
 
-    void clearPersistence(){
+    void clearSession(){
         entityManager.flush();
         entityManager.clear();
     }
